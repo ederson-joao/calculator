@@ -1,0 +1,48 @@
+button{
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 3rem;
+    margin: 0.3rem;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#zeroButton{
+    width: 10rem;
+    text-align: start;
+    padding-left: 1.8rem;
+}
+
+.wrapper{
+    background-color: black;
+    border-radius: 1rem;
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
+.rightColumn{
+    background-color: #FF9500;
+    color: #ffffff;
+}
+
+.coreElements{
+    background-color: #505050;
+    color: #ffffff;
+}
+
+.topLine{
+    background-color: #A5A5A5;
+    color: #000000;
+}
+
+.result{
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 1.75rem 0 0;
+    font-size: 4rem;
+}
