@@ -11,10 +11,12 @@ button:hover{
     cursor: pointer;
 }
 
-#zeroButton{
-    width: 10rem;
+.zeroButton{
+    width: 10.6rem;
     text-align: start;
     padding-left: 1.8rem;
+    background-color: #505050;
+    color: #ffffff;
 }
 
 .wrapper{
@@ -45,4 +47,19 @@ button:hover{
     justify-content: flex-end;
     margin: 0 1.75rem 0 0;
     font-size: 4rem;
+}
+
+@media screen and (min-width: 414px) and (max-width: 422px) {
+    button{
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+    
+    .zeroButton {
+        width: 10.2rem;
+    }
+
+    .result {
+        margin: 0 1.6rem 0 0;
+    }
 }
