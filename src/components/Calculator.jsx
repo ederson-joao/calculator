@@ -9,7 +9,7 @@ export default function Calculator() {
     const [operator, setOperator] = useState();
 
     function inputNum(e){
-        var input = e.target.value;
+        const input = e.target.value;
         if(num === 0){
             setNum(input);
         }else {
@@ -17,11 +17,11 @@ export default function Calculator() {
         }
     }
 
-    function clear(e){
+    function clear(){
         setNum(0);
     }
 
-    function changeSign() {
+    function changeSign(){
         if (num > 0) {
             setNum(-num);
         }else {
@@ -30,13 +30,13 @@ export default function Calculator() {
     }
 
     function operatorHandler(e){
-        var operatorInput=e.target.value;
+        const operatorInput=e.target.value;
         setOperator(operatorInput);
         setOldNum(num);
         setNum(0);
     }
 
-    function calculate() {
+    function calculate(){
         switch (operator) {
             case "÷": 
                 setNum (oldNum / num);
@@ -57,33 +57,137 @@ export default function Calculator() {
                 }
     }
 
+    const buttons = [
+        {
+            className: 'topLine',
+            onClick: clear,
+            label: 'AC',
+            value: ''
+        },
+        {
+            className: 'topLine',
+            onClick: changeSign,
+            label: '+/-',
+            value: ''
+        },
+        {
+            className: 'topLine',
+            onClick: operatorHandler,
+            label: '%',
+            value: '%'
+
+        },
+        {
+            className: 'rightColumn',
+            onClick: operatorHandler,
+            label: '÷',
+            value: '÷'
+
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 7,
+            value: 7
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 8,
+            value: 8
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 9,
+            value: 9
+        },
+        {
+            className: 'rightColumn',
+            onClick: operatorHandler,
+            label: '×',
+            value: '×'
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 4,
+            value: 4
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 5,
+            value: 5
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 6,
+            value: 6
+        },
+        {
+            className: 'rightColumn',
+            onClick: operatorHandler,
+            label: '-',
+            value: '-'
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 1,
+            value: 1
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 2,
+            value: 2
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: 3,
+            value: 3
+        },
+        {
+            className: 'rightColumn',
+            onClick: operatorHandler,
+            label: '+',
+            value: '+'
+        },
+        {
+            className: 'zeroButton',
+            onClick: inputNum,
+            label: 0,
+            value: 0
+        },
+        {
+            className: 'coreElements',
+            onClick: inputNum,
+            label: ',',
+            value: '.'
+        },
+        {
+            className: 'rightColumn',
+            onClick: calculate,
+            label: '=',
+            value: ''
+        }
+        
+    ]
+
   return (
     <div>
         <Box m={5}/>
         <Container maxWidth="xs">
-            <div className="wrapper">
-            <Box m={12}/>
-                <h1 className='result'>{num}</h1>
-                <button className='topLine' onClick={clear}>AC</button>
-                <button className='topLine' onClick={changeSign}>+/-</button>
-                <button className='topLine' onClick={operatorHandler} value={'%'}>%</button>
-                <button className='rightColumn' onClick={operatorHandler} value={'÷'}>÷</button>
-                <button className='coreElements' onClick={inputNum} value={7}>7</button>
-                <button className='coreElements' onClick={inputNum} value={8}>8</button>
-                <button className='coreElements' onClick={inputNum} value={9}>9</button>
-                <button className='rightColumn' onClick={operatorHandler} value={'×'}>×</button>
-                <button className='coreElements' onClick={inputNum} value={4}>4</button>
-                <button className='coreElements' onClick={inputNum} value={5}>5</button>
-                <button className='coreElements' onClick={inputNum} value={6}>6</button>
-                <button className='rightColumn' onClick={operatorHandler} value={'-'}>-</button>
-                <button className='coreElements' onClick={inputNum} value={1}>1</button>
-                <button className='coreElements' onClick={inputNum} value={2}>2</button>
-                <button className='coreElements' onClick={inputNum} value={3}>3</button>
-                <button className='rightColumn' onClick={operatorHandler} value={'+'}>+</button>
-                <button className='coreElements' id='zeroButton' onClick={inputNum} value={0}>0</button>
-                <button className='coreElements' onClick={inputNum} value={"."}>,</button>
-                <button className='rightColumn' onClick={calculate}>=</button>
-            </div>
+                <div className="wrapper">
+                    <Box m={6}/>
+                    <h1 className='result'>{num}</h1>
+                    {buttons.map((button, index) => (
+                        <button key={index} className={button.className} onClick={button.onClick} value={button.value}>{button.label}</button>
+                    ))}
+                </div>
         </Container>
     </div>
   )
